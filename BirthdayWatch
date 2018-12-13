@@ -1,0 +1,96 @@
+import datetime
+#Defining the days in each month for later.
+jan_days = 31
+feb_days = 28
+mar_days = 31
+arp_days = 30
+may_days = 31
+jun_days = 30
+jul_days = 31
+aug_days = 31
+sep_days = 30
+oct_days = 31
+nov_days = 30
+dec_days = 31
+ 
+#Defining the month numbers for each for later.
+jan = 1
+february = 2
+march = 3
+april = 4
+may = 5
+june = 6
+july = 7
+august = 8
+september = 9
+october = 10
+november = 11
+december = 12
+ 
+#days that have transpired since new year -
+days_jan = 31
+days_feb = 59
+days_mar = 90
+days_apr = 120
+days_may = 151
+days_jun = 181
+days_jul = 212
+days_aug = 243
+days_sep = 273
+days_oct = 304
+days_nov = 334
+days_dec = 365
+ 
+#Getting all the inputs.
+birth_month = int(input('What month were you born? mm'))
+birth_day = int(input('What day were you born? dd' ))
+birth_year = int(input('What year were you born? yyyy'))
+ 
+#Defining the todays date variables.
+ 
+today_date_year = datetime.datetime.today().year
+today_date_day = datetime.datetime.today().day
+today_date_month = datetime.datetime.today().month
+ 
+#Math to define your age.
+def answer_age():
+	if today_date_month > birth_month: 
+		return (today_date_year - birth_year)
+	elif today_date_month == birth_month and today_date_day > birth_day:
+		return (today_date_year - birth_year)
+	else:
+		return (today_date_year - birth_year - 1)
+
+def days_since_1st(day, month):
+	if month == (2):
+		return (days_jan + day)
+	if month == (3):
+		return (days_feb + day)
+	if month == (4):
+		return (days_mar + day)
+	if month == (5):
+		return (days_apr + day)
+	if month == (6):
+		return (day_may + day)
+	if month == (7):
+		return (day_jun + day)
+	if month == (8):
+		return (days_jul + day)
+	if month == (9):
+		return (days_aug + day)
+	if month == (10):
+		return (days_sep + day)
+	if month == (11):
+		return (days_oct + day)
+	if month == (12):
+		return (days_nov + day)
+
+def days_til_bday():
+	if days_since_1st(birth_day, birth_month) < days_since_1st(today_date_day, today_date_month):
+		return 365 - (days_since_1st(today_date_day, today_date_month) - days_since_1st(birth_day, birth_month))
+	if days_since_1st(birth_day, birth_month) > days_since_1st(today_date_day, today_date_month):
+		return (days_since_1st(birth_day, birth_month) - days_since_1st(today_date_day, today_date_month))
+
+print ('You are ' + repr(answer_age()) + ' years old')
+
+print ('You have ' + repr(days_til_bday()) + ' days until your next birthday.')
